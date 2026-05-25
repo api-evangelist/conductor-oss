@@ -1,0 +1,364 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Conductor OSS REST API — Metadata
+  description: 'Conductor OSS REST API — Metadata. 9 operations. Lead operation: List task definitions. Self-contained
+    Naftiko capability covering one Conductor OSS business surface.'
+  tags:
+  - Conductor OSS
+  - Metadata
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CONDUCTOR_OSS_API_KEY: CONDUCTOR_OSS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: conductor-metadata
+    baseUri: ''
+    description: Conductor OSS REST API — Metadata business capability. Self-contained, no shared references.
+    resources:
+    - name: metadata-taskdefs
+      path: /metadata/taskdefs
+      operations:
+      - name: listtaskdefinitions
+        method: GET
+        description: List task definitions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: registertaskdefinitions
+        method: POST
+        description: Register task definitions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: metadata-taskdefs-taskType
+      path: /metadata/taskdefs/{taskType}
+      operations:
+      - name: gettaskdefinition
+        method: GET
+        description: Get task definition
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: taskType
+          in: path
+          type: string
+          required: true
+      - name: deletetaskdefinition
+        method: DELETE
+        description: Delete a task definition
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: taskType
+          in: path
+          type: string
+          required: true
+    - name: metadata-workflow
+      path: /metadata/workflow
+      operations:
+      - name: listworkflowdefinitions
+        method: GET
+        description: List workflow definitions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: registerworkflowdefinition
+        method: POST
+        description: Register a workflow definition
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: updateworkflowdefinitions
+        method: PUT
+        description: Update workflow definitions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: metadata-workflow-name
+      path: /metadata/workflow/{name}
+      operations:
+      - name: getworkflowdefinition
+        method: GET
+        description: Get workflow definition
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        - name: version
+          in: query
+          type: integer
+      - name: deleteworkflowdefinition
+        method: DELETE
+        description: Delete a workflow definition
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        - name: version
+          in: query
+          type: integer
+  exposes:
+  - type: rest
+    namespace: conductor-metadata-rest
+    port: 8080
+    description: REST adapter for Conductor OSS REST API — Metadata. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/metadata/taskdefs
+      name: metadata-taskdefs
+      description: REST surface for metadata-taskdefs.
+      operations:
+      - method: GET
+        name: listtaskdefinitions
+        description: List task definitions
+        call: conductor-metadata.listtaskdefinitions
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: registertaskdefinitions
+        description: Register task definitions
+        call: conductor-metadata.registertaskdefinitions
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/metadata/taskdefs/{tasktype}
+      name: metadata-taskdefs-tasktype
+      description: REST surface for metadata-taskdefs-taskType.
+      operations:
+      - method: GET
+        name: gettaskdefinition
+        description: Get task definition
+        call: conductor-metadata.gettaskdefinition
+        with:
+          taskType: rest.taskType
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetaskdefinition
+        description: Delete a task definition
+        call: conductor-metadata.deletetaskdefinition
+        with:
+          taskType: rest.taskType
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/metadata/workflow
+      name: metadata-workflow
+      description: REST surface for metadata-workflow.
+      operations:
+      - method: GET
+        name: listworkflowdefinitions
+        description: List workflow definitions
+        call: conductor-metadata.listworkflowdefinitions
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: registerworkflowdefinition
+        description: Register a workflow definition
+        call: conductor-metadata.registerworkflowdefinition
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateworkflowdefinitions
+        description: Update workflow definitions
+        call: conductor-metadata.updateworkflowdefinitions
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/metadata/workflow/{name}
+      name: metadata-workflow-name
+      description: REST surface for metadata-workflow-name.
+      operations:
+      - method: GET
+        name: getworkflowdefinition
+        description: Get workflow definition
+        call: conductor-metadata.getworkflowdefinition
+        with:
+          name: rest.name
+          version: rest.version
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteworkflowdefinition
+        description: Delete a workflow definition
+        call: conductor-metadata.deleteworkflowdefinition
+        with:
+          name: rest.name
+          version: rest.version
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: conductor-metadata-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Conductor OSS REST API — Metadata. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-task-definitions
+      description: List task definitions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: conductor-metadata.listtaskdefinitions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: register-task-definitions
+      description: Register task definitions
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: conductor-metadata.registertaskdefinitions
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-task-definition
+      description: Get task definition
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: conductor-metadata.gettaskdefinition
+      with:
+        taskType: tools.taskType
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-task-definition
+      description: Delete a task definition
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: conductor-metadata.deletetaskdefinition
+      with:
+        taskType: tools.taskType
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-workflow-definitions
+      description: List workflow definitions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: conductor-metadata.listworkflowdefinitions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: register-workflow-definition
+      description: Register a workflow definition
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: conductor-metadata.registerworkflowdefinition
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-workflow-definitions
+      description: Update workflow definitions
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: conductor-metadata.updateworkflowdefinitions
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-workflow-definition
+      description: Get workflow definition
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: conductor-metadata.getworkflowdefinition
+      with:
+        name: tools.name
+        version: tools.version
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-workflow-definition
+      description: Delete a workflow definition
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: conductor-metadata.deleteworkflowdefinition
+      with:
+        name: tools.name
+        version: tools.version
+      outputParameters:
+      - type: object
+        mapping: $.

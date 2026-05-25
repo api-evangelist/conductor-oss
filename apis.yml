@@ -1,0 +1,228 @@
+aid: conductor-oss
+name: Conductor OSS
+description: >-
+  Conductor OSS is the Netflix-founded, Orkes-stewarded open source workflow
+  and agentic AI orchestration platform. It provides a durable, event-driven
+  workflow engine for coordinating microservices, long-running tasks, human
+  approvals, and LLM-powered agents across any language or cloud, with first
+  class support for HTTP, gRPC, Kafka, AMQP, SQS, and MCP-based tool calling.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+- Agentic AI
+- Durable Execution
+- Event-Driven
+- Microservices
+- Netflix
+- Open Source
+- Orchestration
+- Workflow Engine
+- Workflows
+url: https://raw.githubusercontent.com/api-evangelist/conductor-oss/refs/heads/main/apis.yml
+created: '2026-05-25'
+modified: '2026-05-25'
+specificationVersion: '0.19'
+apis:
+- aid: conductor-oss:conductor-oss-rest-api
+  name: Conductor OSS REST API
+  description: >-
+    The Conductor OSS REST API is the canonical control plane for the workflow
+    engine — registering and versioning workflow and task definitions,
+    starting and querying workflow executions, polling and updating tasks
+    from workers, and wiring external event sources into workflows. It is
+    served by the Conductor Server (Java / Spring Boot) and is the same
+    surface used by every official Conductor SDK and the Orkes-hosted
+    Conductor Cloud.
+  humanURL: https://docs.conductor-oss.org/
+  baseURL: http://localhost:8080/api
+  tags:
+  - Agentic AI
+  - Durable Execution
+  - Event-Driven
+  - Microservices
+  - Open Source
+  - Orchestration
+  - Workflow Engine
+  - Workflows
+  properties:
+  - type: Documentation
+    url: https://docs.conductor-oss.org/
+  - type: APIReference
+    url: https://docs.conductor-oss.org/reference
+  - type: Quickstart
+    url: https://docs.conductor-oss.org/getting-started
+  - type: Authentication
+    url: https://docs.conductor-oss.org/devguide/running/configuration/security
+  - type: OpenAPI
+    url: https://raw.githubusercontent.com/api-evangelist/conductor-oss/refs/heads/main/openapi/conductor-oss-openapi.yml
+  - type: NaftikoCapability
+    url: capabilities/conductor-workflow.yaml
+  - type: NaftikoCapability
+    url: capabilities/conductor-tasks.yaml
+  - type: NaftikoCapability
+    url: capabilities/conductor-metadata.yaml
+  - type: NaftikoCapability
+    url: capabilities/conductor-events.yaml
+- aid: conductor-oss:conductor-mcp
+  name: Conductor MCP Server
+  description: >-
+    Conductor MCP is an official Model Context Protocol server for Orkes
+    Conductor that exposes workflow execution, task management, and metadata
+    operations as MCP tools so that LLMs and AI agents can orchestrate
+    Conductor workflows directly.
+  humanURL: https://github.com/conductor-oss/conductor-mcp
+  tags:
+  - Agentic AI
+  - MCP
+  - Open Source
+  - Orchestration
+  - Tools
+  properties:
+  - type: GitHubRepository
+    url: https://github.com/conductor-oss/conductor-mcp
+  - type: Documentation
+    url: https://docs.conductor-oss.org/ai-cookbook
+common:
+- type: Website
+  url: https://conductor-oss.org/
+- type: Documentation
+  url: https://docs.conductor-oss.org/
+- type: GettingStarted
+  url: https://docs.conductor-oss.org/getting-started
+- type: GitHub
+  url: https://github.com/conductor-oss
+- type: GitHubOrganization
+  url: https://github.com/conductor-oss
+- type: GitHubRepository
+  url: https://github.com/conductor-oss/conductor
+- type: Blog
+  url: https://orkes.io/blog/
+- type: Slack
+  url: https://join.slack.com/t/orkes-conductor/shared_invite/zt-3dpcskdyd-W895bJDm8psAV7viYG3jFA
+- type: YouTube
+  url: https://www.youtube.com/@orkesio
+- type: License
+  url: https://github.com/conductor-oss/conductor/blob/main/LICENSE
+- type: Pricing
+  url: https://orkes.io/pricing
+- type: Portal
+  url: https://cloud.orkes.io/
+- type: SignUp
+  url: https://cloud.orkes.io/signup
+- type: Training
+  url: https://orkes.io/academy/
+- type: SDK
+  url: https://github.com/conductor-oss/java-sdk
+- type: SDK
+  url: https://github.com/conductor-oss/python-sdk
+- type: SDK
+  url: https://github.com/conductor-oss/go-sdk
+- type: SDK
+  url: https://github.com/conductor-oss/javascript-sdk
+- type: SDK
+  url: https://github.com/conductor-oss/csharp-sdk
+- type: SDK
+  url: https://github.com/conductor-oss/clojure-sdk
+- type: SDK
+  url: https://github.com/conductor-oss/rust-sdk
+- type: SDK
+  url: https://github.com/conductor-oss/ruby-sdk
+- type: CLI
+  url: https://github.com/conductor-oss/conductor-cli
+- type: Features
+  data:
+  - name: Durable Workflow Execution
+    description: >-
+      Workflow state is persisted at every step so executions survive worker
+      restarts, server failover, and long human-in-the-loop waits.
+  - name: Polyglot Workers
+    description: >-
+      Tasks are executed by language-agnostic workers that poll the server,
+      with official SDKs in Java, Python, Go, JavaScript / TypeScript, C#,
+      Clojure, Ruby, and Rust.
+  - name: System Tasks and Operators
+    description: >-
+      Built-in HTTP, Kafka, JQ, wait, human approval, sub-workflow, fork,
+      join, switch, do-while, and dynamic-fork operators compose workflows
+      without writing code.
+  - name: Agentic AI and LLM Orchestration
+    description: >-
+      Native LLM tasks for 14+ providers, vector database integrations for
+      RAG, MCP tool calling, and human-in-the-loop checkpoints make
+      Conductor a runtime for agentic AI applications.
+  - name: Event-Driven Triggers
+    description: >-
+      Event handlers consume from Kafka, AMQP, SQS, NATS, and webhook
+      sources to start workflows or complete tasks from external systems.
+  - name: Horizontal Scalability
+    description: >-
+      Stateless API servers and worker pools scale horizontally, with
+      pluggable persistence (PostgreSQL, MySQL, Cassandra, Redis) and
+      indexing (OpenSearch / Elasticsearch).
+  - name: Operational Observability
+    description: >-
+      Built-in metrics, structured logs, distributed tracing, and a Swagger
+      UI on every server expose the workflow surface for operators.
+- type: UseCases
+  data:
+  - name: Microservices Orchestration
+    description: >-
+      Coordinate sagas, compensations, retries, and timeouts across
+      distributed microservices without bespoke orchestration code.
+  - name: AI Agent Orchestration
+    description: >-
+      Run production-grade agentic workflows with reasoning loops, tool
+      calling, MCP integration, RAG retrieval, and human approvals.
+  - name: Payment and Order Processing
+    description: >-
+      Reliable long-running flows for payments, fulfillment, KYC, and
+      onboarding — the reference example workload shipped by Conductor.
+  - name: Data and ML Pipelines
+    description: >-
+      Schedule and orchestrate ETL, model training, and inference pipelines
+      with durable retries and conditional branching.
+  - name: Human-in-the-Loop Approvals
+    description: >-
+      Pause workflows on human tasks, capture approvals via UI or API, and
+      resume execution deterministically.
+  - name: Event-Driven Integration
+    description: >-
+      Bridge message brokers and SaaS webhooks into deterministic workflows
+      across the enterprise.
+- type: Integrations
+  data:
+  - name: Apache Kafka
+    description: System task and event-handler integration for Kafka topics.
+  - name: AMQP / RabbitMQ
+    description: Built-in AMQP system task and event source.
+  - name: AWS SQS
+    description: Native SQS event queue and system task module.
+  - name: NATS
+    description: NATS event queue integration for triggering workflows.
+  - name: PostgreSQL / MySQL / Cassandra / Redis
+    description: Pluggable persistence backends for workflow and task state.
+  - name: OpenSearch / Elasticsearch
+    description: Pluggable indexing backends powering search and history.
+  - name: AWS S3 / Azure Blob
+    description: External payload storage for large workflow inputs and outputs.
+  - name: Model Context Protocol (MCP)
+    description: Official MCP server exposes Conductor to AI agents as tools.
+  - name: gRPC
+    description: gRPC API surface alongside the REST API for high-performance clients.
+- type: Solutions
+  data:
+  - name: Conductor OSS
+    description: >-
+      Apache 2.0 open source workflow engine, self-hosted via Docker, Helm,
+      or source build.
+  - name: Orkes Developer Edition
+    description: >-
+      Free hosted Conductor sandbox by Orkes with all enterprise features
+      enabled for prototyping and learning.
+  - name: Orkes Enterprise / Cloud
+    description: >-
+      Fully managed Conductor on AWS, Azure, GCP, or on-prem with SOC2,
+      RBAC, SSO, audit logs, and up to 99.99% availability SLA.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
