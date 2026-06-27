@@ -3,19 +3,12 @@
   "feeds": [
     {
       "source": "https://orkes.io/blog/",
-      "feed_url": "https://orkes.io/blog/",
-      "title": "",
-      "saved": 0,
-      "method": "none"
-    },
-    {
-      "source": "https://github.com/conductor-oss/conductor",
-      "feed_url": "https://github.com/conductor-oss/conductor",
-      "title": "",
-      "saved": 0,
-      "method": "none"
+      "feed_url": "",
+      "saved": 2,
+      "method": "agent-scrape"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:33:41Z",
+  "post_count": 4,
+  "agent_pulled": "2026-06-27"
 }

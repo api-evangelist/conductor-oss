@@ -45,7 +45,7 @@ apis:
         url: https://docs.conductor-oss.org/
       - type: APIReference
         url: https://docs.conductor-oss.org/reference
-      - type: Quickstart
+      - type: GettingStarted
         url: https://docs.conductor-oss.org/getting-started
       - type: Authentication
         url: https://docs.conductor-oss.org/devguide/running/configuration/security
@@ -95,25 +95,25 @@ common:
     url: https://orkes.io/pricing
   - type: Portal
     url: https://cloud.orkes.io/
-  - type: SignUp
+  - type: Signup
     url: https://cloud.orkes.io/signup
   - type: Training
     url: https://orkes.io/academy/
-  - type: SDK
+  - type: SDKs
     url: https://github.com/conductor-oss/java-sdk
-  - type: SDK
+  - type: SDKs
     url: https://github.com/conductor-oss/python-sdk
-  - type: SDK
+  - type: SDKs
     url: https://github.com/conductor-oss/go-sdk
-  - type: SDK
+  - type: SDKs
     url: https://github.com/conductor-oss/javascript-sdk
-  - type: SDK
+  - type: SDKs
     url: https://github.com/conductor-oss/csharp-sdk
-  - type: SDK
+  - type: SDKs
     url: https://github.com/conductor-oss/clojure-sdk
-  - type: SDK
+  - type: SDKs
     url: https://github.com/conductor-oss/rust-sdk
-  - type: SDK
+  - type: SDKs
     url: https://github.com/conductor-oss/ruby-sdk
   - type: CLI
     url: https://github.com/conductor-oss/conductor-cli
