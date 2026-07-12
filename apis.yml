@@ -71,6 +71,8 @@ apis:
       - type: Documentation
         url: https://docs.conductor-oss.org/ai-cookbook
 common:
+  - type: DomainSecurity
+    url: security/conductor-oss-domain-security.yml
   - type: Website
     url: https://conductor-oss.org/
   - type: Documentation

@@ -1,0 +1,33 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: conductor-oss.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Dec  1 23:59:59 2026 GMT
+  hsts: false
+- host: cloud.orkes.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 27 23:22:47 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: docs.conductor-oss.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov 19 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 31556952
+domains:
+- domain: conductor-oss.org
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false
+- domain: orkes.io
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
