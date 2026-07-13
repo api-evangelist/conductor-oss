@@ -2,13 +2,14 @@
   "repo": "conductor-oss",
   "feeds": [
     {
-      "source": "https://orkes.io/blog/",
-      "feed_url": "",
-      "saved": 2,
-      "method": "agent-scrape"
+      "source": "https://github.com/conductor-oss/conductor",
+      "feed_url": "https://github.com/conductor-oss/conductor",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-06-27T12:33:41Z",
-  "post_count": 4,
-  "agent_pulled": "2026-06-27"
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 5,
+  "agent_pulled": "2026-07-04"
 }
