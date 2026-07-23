@@ -1,0 +1,68 @@
+openapi: 3.1.0
+info:
+  title: Conductor OSS REST Events API
+  description: The Conductor OSS REST API exposes the workflow orchestration engine's surface for managing workflow definitions, starting and querying workflow executions, handling tasks and workers, registering event handlers, and administering metadata. Conductor OSS is the Netflix-founded, Orkes-stewarded open source workflow and agentic AI orchestration platform.
+  version: 3.x
+  contact:
+    name: Conductor OSS
+    url: https://conductor-oss.org/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: '{baseUrl}/api'
+  description: Conductor Server
+  variables:
+    baseUrl:
+      default: http://localhost:8080
+tags:
+- name: Events
+paths:
+  /event:
+    get:
+      operationId: listEventHandlers
+      summary: List event handlers
+      description: Returns all registered event handlers.
+      tags:
+      - Events
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventHandler'
+    post:
+      operationId: createEventHandler
+      summary: Create event handler
+      description: Registers a new event handler.
+      tags:
+      - Events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventHandler'
+      responses:
+        '204':
+          description: Event handler created
+components:
+  schemas:
+    EventHandler:
+      type: object
+      properties:
+        name:
+          type: string
+        event:
+          type: string
+        condition:
+          type: string
+        actions:
+          type: array
+          items:
+            type: object
+        active:
+          type: boolean

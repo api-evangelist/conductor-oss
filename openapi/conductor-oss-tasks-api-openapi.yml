@@ -1,0 +1,217 @@
+openapi: 3.1.0
+info:
+  title: Conductor OSS REST Events Tasks API
+  description: The Conductor OSS REST API exposes the workflow orchestration engine's surface for managing workflow definitions, starting and querying workflow executions, handling tasks and workers, registering event handlers, and administering metadata. Conductor OSS is the Netflix-founded, Orkes-stewarded open source workflow and agentic AI orchestration platform.
+  version: 3.x
+  contact:
+    name: Conductor OSS
+    url: https://conductor-oss.org/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: '{baseUrl}/api'
+  description: Conductor Server
+  variables:
+    baseUrl:
+      default: http://localhost:8080
+tags:
+- name: Tasks
+paths:
+  /tasks/poll/{taskType}:
+    get:
+      operationId: pollTask
+      summary: Poll for a task
+      description: Polls for a task of a given type for a worker.
+      tags:
+      - Tasks
+      parameters:
+      - name: taskType
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: workerid
+        in: query
+        schema:
+          type: string
+      - name: domain
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+  /tasks/poll/batch/{taskType}:
+    get:
+      operationId: batchPollTasks
+      summary: Batch poll for tasks
+      description: Polls for multiple tasks of a given type.
+      tags:
+      - Tasks
+      parameters:
+      - name: taskType
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: workerid
+        in: query
+        schema:
+          type: string
+      - name: count
+        in: query
+        schema:
+          type: integer
+          default: 1
+      - name: timeout
+        in: query
+        schema:
+          type: integer
+          default: 100
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+  /tasks:
+    post:
+      operationId: updateTask
+      summary: Update task status
+      description: Updates the status of a task with results.
+      tags:
+      - Tasks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskResult'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            text/plain:
+              schema:
+                type: string
+  /tasks/{taskId}:
+    get:
+      operationId: getTask
+      summary: Get task details
+      description: Returns details of a specific task.
+      tags:
+      - Tasks
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+  /tasks/queue/sizes:
+    get:
+      operationId: getTaskQueueSizes
+      summary: Get task queue sizes
+      description: Returns the sizes of task queues.
+      tags:
+      - Tasks
+      parameters:
+      - name: taskType
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+components:
+  schemas:
+    TaskResult:
+      type: object
+      required:
+      - workflowInstanceId
+      - taskId
+      - status
+      properties:
+        workflowInstanceId:
+          type: string
+        taskId:
+          type: string
+        status:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+        outputData:
+          type: object
+        reasonForIncompletion:
+          type: string
+        callbackAfterSeconds:
+          type: integer
+          format: int64
+        workerId:
+          type: string
+    Task:
+      type: object
+      properties:
+        taskId:
+          type: string
+        taskType:
+          type: string
+        status:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+          - TIMED_OUT
+          - CANCELED
+          - SCHEDULED
+        referenceTaskName:
+          type: string
+        workflowInstanceId:
+          type: string
+        inputData:
+          type: object
+        outputData:
+          type: object
+        scheduledTime:
+          type: integer
+          format: int64
+        startTime:
+          type: integer
+          format: int64
+        endTime:
+          type: integer
+          format: int64
+        retryCount:
+          type: integer
+        pollCount:
+          type: integer
+        callbackAfterSeconds:
+          type: integer
+          format: int64
+        workerId:
+          type: string

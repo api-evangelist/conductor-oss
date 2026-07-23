@@ -1,0 +1,376 @@
+openapi: 3.1.0
+info:
+  title: Conductor OSS REST Events Workflow API
+  description: The Conductor OSS REST API exposes the workflow orchestration engine's surface for managing workflow definitions, starting and querying workflow executions, handling tasks and workers, registering event handlers, and administering metadata. Conductor OSS is the Netflix-founded, Orkes-stewarded open source workflow and agentic AI orchestration platform.
+  version: 3.x
+  contact:
+    name: Conductor OSS
+    url: https://conductor-oss.org/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: '{baseUrl}/api'
+  description: Conductor Server
+  variables:
+    baseUrl:
+      default: http://localhost:8080
+tags:
+- name: Workflow
+paths:
+  /workflow:
+    post:
+      operationId: startWorkflow
+      summary: Start a workflow
+      description: Starts a new workflow execution.
+      tags:
+      - Workflow
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StartWorkflowRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            text/plain:
+              schema:
+                type: string
+                description: Workflow ID
+  /workflow/{workflowId}:
+    get:
+      operationId: getWorkflow
+      summary: Get workflow execution
+      description: Returns the execution details of a specific workflow.
+      tags:
+      - Workflow
+      parameters:
+      - name: workflowId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: includeTasks
+        in: query
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workflow'
+    delete:
+      operationId: terminateWorkflow
+      summary: Terminate a workflow
+      description: Terminates a running workflow execution.
+      tags:
+      - Workflow
+      parameters:
+      - name: workflowId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: reason
+        in: query
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Workflow terminated
+  /workflow/{workflowId}/pause:
+    put:
+      operationId: pauseWorkflow
+      summary: Pause a workflow
+      description: Pauses a running workflow execution.
+      tags:
+      - Workflow
+      parameters:
+      - name: workflowId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Workflow paused
+  /workflow/{workflowId}/resume:
+    put:
+      operationId: resumeWorkflow
+      summary: Resume a workflow
+      description: Resumes a paused workflow execution.
+      tags:
+      - Workflow
+      parameters:
+      - name: workflowId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Workflow resumed
+  /workflow/{workflowId}/restart:
+    post:
+      operationId: restartWorkflow
+      summary: Restart a workflow
+      description: Restarts a completed or terminated workflow from the beginning.
+      tags:
+      - Workflow
+      parameters:
+      - name: workflowId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: useLatestDefinitions
+        in: query
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '204':
+          description: Workflow restarted
+  /workflow/{workflowId}/retry:
+    post:
+      operationId: retryWorkflow
+      summary: Retry a workflow
+      description: Retries a failed workflow from the last failed task.
+      tags:
+      - Workflow
+      parameters:
+      - name: workflowId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: resumeSubworkflowTasks
+        in: query
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '204':
+          description: Workflow retried
+  /workflow/{workflowId}/rerun:
+    post:
+      operationId: rerunWorkflow
+      summary: Rerun a workflow
+      description: Reruns a completed workflow from a specific task.
+      tags:
+      - Workflow
+      parameters:
+      - name: workflowId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RerunWorkflowRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            text/plain:
+              schema:
+                type: string
+  /workflow/{workflowId}/skiptask/{taskReferenceName}:
+    put:
+      operationId: skipTask
+      summary: Skip a task
+      description: Skips a specific task in a running workflow.
+      tags:
+      - Workflow
+      parameters:
+      - name: workflowId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: taskReferenceName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Task skipped
+  /workflow/search:
+    get:
+      operationId: searchWorkflows
+      summary: Search workflows
+      description: Search for workflow executions based on query parameters.
+      tags:
+      - Workflow
+      parameters:
+      - name: start
+        in: query
+        schema:
+          type: integer
+          default: 0
+      - name: size
+        in: query
+        schema:
+          type: integer
+          default: 100
+      - name: sort
+        in: query
+        schema:
+          type: string
+      - name: freeText
+        in: query
+        schema:
+          type: string
+      - name: query
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+components:
+  schemas:
+    SearchResult:
+      type: object
+      properties:
+        totalHits:
+          type: integer
+          format: int64
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Workflow'
+    RerunWorkflowRequest:
+      type: object
+      properties:
+        reRunFromWorkflowId:
+          type: string
+        reRunFromTaskId:
+          type: string
+        workflowInput:
+          type: object
+        taskInput:
+          type: object
+        correlationId:
+          type: string
+    Workflow:
+      type: object
+      properties:
+        workflowId:
+          type: string
+        workflowName:
+          type: string
+        workflowVersion:
+          type: integer
+        correlationId:
+          type: string
+        status:
+          type: string
+          enum:
+          - RUNNING
+          - COMPLETED
+          - FAILED
+          - TIMED_OUT
+          - TERMINATED
+          - PAUSED
+        input:
+          type: object
+        output:
+          type: object
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
+        startTime:
+          type: integer
+          format: int64
+        endTime:
+          type: integer
+          format: int64
+        updateTime:
+          type: integer
+          format: int64
+        reasonForIncompletion:
+          type: string
+        priority:
+          type: integer
+        failedReferenceTaskNames:
+          type: array
+          items:
+            type: string
+    Task:
+      type: object
+      properties:
+        taskId:
+          type: string
+        taskType:
+          type: string
+        status:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+          - TIMED_OUT
+          - CANCELED
+          - SCHEDULED
+        referenceTaskName:
+          type: string
+        workflowInstanceId:
+          type: string
+        inputData:
+          type: object
+        outputData:
+          type: object
+        scheduledTime:
+          type: integer
+          format: int64
+        startTime:
+          type: integer
+          format: int64
+        endTime:
+          type: integer
+          format: int64
+        retryCount:
+          type: integer
+        pollCount:
+          type: integer
+        callbackAfterSeconds:
+          type: integer
+          format: int64
+        workerId:
+          type: string
+    StartWorkflowRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        version:
+          type: integer
+        correlationId:
+          type: string
+        input:
+          type: object
+        taskToDomain:
+          type: object
+          additionalProperties:
+            type: string
+        externalInputPayloadStoragePath:
+          type: string
+        priority:
+          type: integer

@@ -1,0 +1,333 @@
+openapi: 3.1.0
+info:
+  title: Conductor OSS REST Events Metadata API
+  description: The Conductor OSS REST API exposes the workflow orchestration engine's surface for managing workflow definitions, starting and querying workflow executions, handling tasks and workers, registering event handlers, and administering metadata. Conductor OSS is the Netflix-founded, Orkes-stewarded open source workflow and agentic AI orchestration platform.
+  version: 3.x
+  contact:
+    name: Conductor OSS
+    url: https://conductor-oss.org/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: '{baseUrl}/api'
+  description: Conductor Server
+  variables:
+    baseUrl:
+      default: http://localhost:8080
+tags:
+- name: Metadata
+paths:
+  /metadata/workflow:
+    get:
+      operationId: listWorkflowDefinitions
+      summary: List workflow definitions
+      description: Returns all registered workflow definitions.
+      tags:
+      - Metadata
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkflowDef'
+    post:
+      operationId: registerWorkflowDefinition
+      summary: Register a workflow definition
+      description: Registers a new workflow definition.
+      tags:
+      - Metadata
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowDef'
+      responses:
+        '204':
+          description: Workflow definition registered
+    put:
+      operationId: updateWorkflowDefinitions
+      summary: Update workflow definitions
+      description: Updates existing workflow definitions.
+      tags:
+      - Metadata
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WorkflowDef'
+      responses:
+        '204':
+          description: Workflow definitions updated
+  /metadata/workflow/{name}:
+    get:
+      operationId: getWorkflowDefinition
+      summary: Get workflow definition
+      description: Returns a specific workflow definition by name.
+      tags:
+      - Metadata
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowDef'
+    delete:
+      operationId: deleteWorkflowDefinition
+      summary: Delete a workflow definition
+      description: Deletes a workflow definition by name and version.
+      tags:
+      - Metadata
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: query
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Workflow definition deleted
+  /metadata/taskdefs:
+    get:
+      operationId: listTaskDefinitions
+      summary: List task definitions
+      description: Returns all registered task definitions.
+      tags:
+      - Metadata
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaskDef'
+    post:
+      operationId: registerTaskDefinitions
+      summary: Register task definitions
+      description: Registers new task definitions.
+      tags:
+      - Metadata
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TaskDef'
+      responses:
+        '204':
+          description: Task definitions registered
+  /metadata/taskdefs/{taskType}:
+    get:
+      operationId: getTaskDefinition
+      summary: Get task definition
+      description: Returns a specific task definition by name.
+      tags:
+      - Metadata
+      parameters:
+      - name: taskType
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskDef'
+    delete:
+      operationId: deleteTaskDefinition
+      summary: Delete a task definition
+      description: Deletes a task definition by name.
+      tags:
+      - Metadata
+      parameters:
+      - name: taskType
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Task definition deleted
+components:
+  schemas:
+    WorkflowTask:
+      type: object
+      required:
+      - name
+      - taskReferenceName
+      - type
+      properties:
+        name:
+          type: string
+        taskReferenceName:
+          type: string
+        type:
+          type: string
+          enum:
+          - SIMPLE
+          - DYNAMIC
+          - FORK_JOIN
+          - FORK_JOIN_DYNAMIC
+          - DECISION
+          - SWITCH
+          - JOIN
+          - DO_WHILE
+          - SUB_WORKFLOW
+          - EVENT
+          - WAIT
+          - HUMAN
+          - HTTP
+          - INLINE
+          - JSON_JQ_TRANSFORM
+          - SET_VARIABLE
+          - TERMINATE
+        inputParameters:
+          type: object
+        dynamicTaskNameParam:
+          type: string
+        caseValueParam:
+          type: string
+        caseExpression:
+          type: string
+        decisionCases:
+          type: object
+        defaultCase:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowTask'
+        forkTasks:
+          type: array
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/WorkflowTask'
+        joinOn:
+          type: array
+          items:
+            type: string
+        subWorkflowParam:
+          type: object
+        optional:
+          type: boolean
+        startDelay:
+          type: integer
+        retryCount:
+          type: integer
+    WorkflowDef:
+      type: object
+      required:
+      - name
+      - tasks
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        version:
+          type: integer
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowTask'
+        inputParameters:
+          type: array
+          items:
+            type: string
+        outputParameters:
+          type: object
+        schemaVersion:
+          type: integer
+        restartable:
+          type: boolean
+        workflowStatusListenerEnabled:
+          type: boolean
+        timeoutSeconds:
+          type: integer
+          format: int64
+        timeoutPolicy:
+          type: string
+          enum:
+          - TIME_OUT_WF
+          - ALERT_ONLY
+        failureWorkflow:
+          type: string
+        ownerEmail:
+          type: string
+    TaskDef:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        retryCount:
+          type: integer
+        timeoutSeconds:
+          type: integer
+          format: int64
+        inputKeys:
+          type: array
+          items:
+            type: string
+        outputKeys:
+          type: array
+          items:
+            type: string
+        timeoutPolicy:
+          type: string
+          enum:
+          - RETRY
+          - TIME_OUT_WF
+          - ALERT_ONLY
+        retryLogic:
+          type: string
+          enum:
+          - FIXED
+          - EXPONENTIAL_BACKOFF
+          - LINEAR_BACKOFF
+        retryDelaySeconds:
+          type: integer
+        responseTimeoutSeconds:
+          type: integer
+          format: int64
+        concurrentExecLimit:
+          type: integer
+        rateLimitPerFrequency:
+          type: integer
+        rateLimitFrequencyInSeconds:
+          type: integer
+        ownerEmail:
+          type: string
+        pollTimeoutSeconds:
+          type: integer
