@@ -6,7 +6,18 @@ description: >-
   and LLM-powered agents across any language or cloud, with first class support for HTTP, gRPC, Kafka, AMQP, SQS, and
   MCP-based tool calling.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/conductor-oss.png
 tags:
   - Agentic AI
   - Durable Execution
@@ -22,54 +33,96 @@ created: '2026-05-25'
 modified: '2026-05-25'
 specificationVersion: '0.19'
 apis:
-  - aid: conductor-oss:conductor-oss-rest-api
-    name: Conductor OSS REST API
-    description: >-
-      The Conductor OSS REST API is the canonical control plane for the workflow engine — registering and versioning
-      workflow and task definitions, starting and querying workflow executions, polling and updating tasks from workers,
-      and wiring external event sources into workflows. It is served by the Conductor Server (Java / Spring Boot) and is
-      the same surface used by every official Conductor SDK and the Orkes-hosted Conductor Cloud.
-    humanURL: https://docs.conductor-oss.org/
-    baseURL: http://localhost:8080/api
-    tags:
-      - Agentic AI
-      - Durable Execution
-      - Event-Driven
-      - Microservices
-      - Open Source
-      - Orchestration
-      - Workflow Engine
-      - Workflows
-    properties:
-      - type: Documentation
-        url: https://docs.conductor-oss.org/
-      - type: APIReference
-        url: https://docs.conductor-oss.org/reference
-      - type: GettingStarted
-        url: https://docs.conductor-oss.org/getting-started
-      - type: Authentication
-        url: https://docs.conductor-oss.org/devguide/running/configuration/security
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/conductor-oss/refs/heads/main/openapi/conductor-oss-openapi.yml
-  - aid: conductor-oss:conductor-mcp
-    name: Conductor MCP Server
-    description: >-
-      Conductor MCP is an official Model Context Protocol server for Orkes Conductor that exposes workflow execution,
-      task management, and metadata operations as MCP tools so that LLMs and AI agents can orchestrate Conductor
-      workflows directly.
-    humanURL: https://github.com/conductor-oss/conductor-mcp
-    tags:
-      - Agentic AI
-      - MCP
-      - Open Source
-      - Orchestration
-      - Tools
-    properties:
-      - type: GitHubRepository
-        url: https://github.com/conductor-oss/conductor-mcp
-      - type: Documentation
-        url: https://docs.conductor-oss.org/ai-cookbook
+- aid: conductor-oss:conductor-mcp
+  name: Conductor MCP Server
+  description: >-
+    Conductor MCP is an official Model Context Protocol server for Orkes Conductor that exposes workflow
+    execution, task management, and metadata operations as MCP tools so that LLMs and AI agents can orchestrate
+    Conductor workflows directly.
+  humanURL: https://github.com/conductor-oss/conductor-mcp
+  tags:
+  - Agentic AI
+  - MCP
+  - Open Source
+  - Orchestration
+  - Tools
+  properties:
+  - type: GitHubRepository
+    url: https://github.com/conductor-oss/conductor-mcp
+  - type: Documentation
+    url: https://docs.conductor-oss.org/ai-cookbook
+- aid: conductor-oss:conductor-oss-events-api
+  name: Conductor OSS Events API
+  description: The Events API from Conductor OSS — 1 operation(s) for events.
+  humanURL: https://docs.conductor-oss.org/
+  baseURL: http://localhost:8080/api
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/conductor-oss-events-api-openapi.yml
+  - type: Documentation
+    url: https://docs.conductor-oss.org/
+  - type: APIReference
+    url: https://docs.conductor-oss.org/reference
+  - type: GettingStarted
+    url: https://docs.conductor-oss.org/getting-started
+  - type: Authentication
+    url: https://docs.conductor-oss.org/devguide/running/configuration/security
+- aid: conductor-oss:conductor-oss-metadata-api
+  name: Conductor OSS Metadata API
+  description: The Metadata API from Conductor OSS — 4 operation(s) for metadata.
+  humanURL: https://docs.conductor-oss.org/
+  baseURL: http://localhost:8080/api
+  tags:
+  - Metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/conductor-oss-metadata-api-openapi.yml
+  - type: Documentation
+    url: https://docs.conductor-oss.org/
+  - type: APIReference
+    url: https://docs.conductor-oss.org/reference
+  - type: GettingStarted
+    url: https://docs.conductor-oss.org/getting-started
+  - type: Authentication
+    url: https://docs.conductor-oss.org/devguide/running/configuration/security
+- aid: conductor-oss:conductor-oss-tasks-api
+  name: Conductor OSS Tasks API
+  description: The Tasks API from Conductor OSS — 5 operation(s) for tasks.
+  humanURL: https://docs.conductor-oss.org/
+  baseURL: http://localhost:8080/api
+  tags:
+  - Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/conductor-oss-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.conductor-oss.org/
+  - type: APIReference
+    url: https://docs.conductor-oss.org/reference
+  - type: GettingStarted
+    url: https://docs.conductor-oss.org/getting-started
+  - type: Authentication
+    url: https://docs.conductor-oss.org/devguide/running/configuration/security
+- aid: conductor-oss:conductor-oss-workflow-api
+  name: Conductor OSS Workflow API
+  description: The Workflow API from Conductor OSS — 9 operation(s) for workflow.
+  humanURL: https://docs.conductor-oss.org/
+  baseURL: http://localhost:8080/api
+  tags:
+  - Workflow
+  properties:
+  - type: OpenAPI
+    url: openapi/conductor-oss-workflow-api-openapi.yml
+  - type: Documentation
+    url: https://docs.conductor-oss.org/
+  - type: APIReference
+    url: https://docs.conductor-oss.org/reference
+  - type: GettingStarted
+    url: https://docs.conductor-oss.org/getting-started
+  - type: Authentication
+    url: https://docs.conductor-oss.org/devguide/running/configuration/security
 common:
   - type: AgenticAccess
     url: agentic-access/conductor-oss-agentic-access.yml
