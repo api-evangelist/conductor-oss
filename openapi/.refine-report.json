@@ -1,0 +1,20 @@
+{
+  "provider": "conductor-oss",
+  "sources": [
+    "conductor-oss-events-api-openapi.yml",
+    "conductor-oss-metadata-api-openapi.yml",
+    "conductor-oss-tasks-api-openapi.yml",
+    "conductor-oss-workflow-api-openapi.yml"
+  ],
+  "outputs": [
+    "conductor-oss-events-api-openapi.yml",
+    "conductor-oss-metadata-api-openapi.yml",
+    "conductor-oss-tasks-api-openapi.yml",
+    "conductor-oss-workflow-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
