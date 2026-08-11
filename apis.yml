@@ -124,6 +124,10 @@ apis:
   - type: Authentication
     url: https://docs.conductor-oss.org/devguide/running/configuration/security
 common:
+  - type: IssueTracker
+    url: https://github.com/conductor-oss/conductor-mcp/issues
+  - type: Releases
+    url: https://github.com/conductor-oss/conductor-mcp/releases
   - type: AgenticAccess
     url: agentic-access/conductor-oss-agentic-access.yml
   - type: DomainSecurity
