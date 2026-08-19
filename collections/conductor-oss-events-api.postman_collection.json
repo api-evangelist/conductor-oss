@@ -1,0 +1,232 @@
+{
+  "item": [
+    {
+      "id": "3af25918-e826-4cd9-ba10-efe1cad16226",
+      "name": "Events",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d0dba287-ae2b-4cb7-a125-263a2f567d38",
+          "name": "List event handlers",
+          "request": {
+            "name": "List event handlers",
+            "description": {
+              "content": "Returns all registered event handlers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4f59c083-1bf7-464e-91bd-f9ff8e5b6cfd",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"event\": \"string\",\n    \"condition\": \"string\",\n    \"active\": true\n  },\n  {\n    \"name\": \"string\",\n    \"event\": \"string\",\n    \"condition\": \"string\",\n    \"active\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55c0bbee-285c-49a0-9cb0-721fd789fcd0",
+          "name": "Create event handler",
+          "request": {
+            "name": "Create event handler",
+            "description": {
+              "content": "Registers a new event handler.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"event\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"actions\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"active\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "21c0cad1-7236-4195-9baa-9ed962e1490f",
+              "name": "Event handler created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"event\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"actions\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"active\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "{{baseUrl}}/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0267e720-8e95-429f-b444-ffeb51318b5a",
+    "name": "Conductor OSS REST Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Conductor OSS REST API exposes the workflow orchestration engine's surface for managing workflow definitions, starting and querying workflow executions, handling tasks and workers, registering event handlers, and administering metadata. Conductor OSS is the Netflix-founded, Orkes-stewarded open source workflow and agentic AI orchestration platform.\n\nContact Support:\n Name: Conductor OSS",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Conductor OSS REST Events Workflow API",
+    "version": "3.x"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workflow",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start a workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{baseUrl}/api/workflow",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts a new workflow execution."
+        },
+        {
+          "info": {
+            "name": "Get workflow execution",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/api/workflow/:workflowId",
+            "params": [
+              {
+                "name": "workflowId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "includeTasks",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the execution details of a specific workflow."
+        },
+        {
+          "info": {
+            "name": "Terminate a workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{baseUrl}/api/workflow/:workflowId",
+            "params": [
+              {
+                "name": "workflowId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "reason",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Terminates a running workflow execution."
+        },
+        {
+          "info": {
+            "name": "Pause a workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{baseUrl}/api/workflow/:workflowId/pause",
+            "params": [
+              {
+                "name": "workflowId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Pauses a running workflow execution."
+        },
+        {
+          "info": {
+            "name": "Resume a workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{baseUrl}/api/workflow/:workflowId/resume",
+            "params": [
+              {
+                "name": "workflowId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Resumes a paused workflow execution."
+        },
+        {
+          "info": {
+            "name": "Restart a workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{baseUrl}/api/workflow/:workflowId/restart",
+            "params": [
+              {
+                "name": "workflowId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "useLatestDefinitions",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Restarts a completed or terminated workflow from the beginning."
+        },
+        {
+          "info": {
+            "name": "Retry a workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{baseUrl}/api/workflow/:workflowId/retry",
+            "params": [
+              {
+                "name": "workflowId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resumeSubworkflowTasks",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retries a failed workflow from the last failed task."
+        },
+        {
+          "info": {
+            "name": "Rerun a workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{baseUrl}/api/workflow/:workflowId/rerun",
+            "params": [
+              {
+                "name": "workflowId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reruns a completed workflow from a specific task."
+        },
+        {
+          "info": {
+            "name": "Skip a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{baseUrl}/api/workflow/:workflowId/skiptask/:taskReferenceName",
+            "params": [
+              {
+                "name": "workflowId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "taskReferenceName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Skips a specific task in a running workflow."
+        },
+        {
+          "info": {
+            "name": "Search workflows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/api/workflow/search",
+            "params": [
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "freeText",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search for workflow executions based on query parameters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

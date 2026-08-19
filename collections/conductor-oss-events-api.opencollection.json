@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Conductor OSS REST Events API",
+    "version": "3.x"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List event handlers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/api/event"
+          },
+          "docs": "Returns all registered event handlers."
+        },
+        {
+          "info": {
+            "name": "Create event handler",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{baseUrl}/api/event",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers a new event handler."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

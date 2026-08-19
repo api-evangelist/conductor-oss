@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Conductor OSS REST Events Tasks API",
+    "version": "3.x"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Poll for a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/api/tasks/poll/:taskType",
+            "params": [
+              {
+                "name": "taskType",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workerid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "domain",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Polls for a task of a given type for a worker."
+        },
+        {
+          "info": {
+            "name": "Batch poll for tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/api/tasks/poll/batch/:taskType",
+            "params": [
+              {
+                "name": "taskType",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workerid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "timeout",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Polls for multiple tasks of a given type."
+        },
+        {
+          "info": {
+            "name": "Update task status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{baseUrl}/api/tasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the status of a task with results."
+        },
+        {
+          "info": {
+            "name": "Get task details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/api/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details of a specific task."
+        },
+        {
+          "info": {
+            "name": "Get task queue sizes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/api/tasks/queue/sizes",
+            "params": [
+              {
+                "name": "taskType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the sizes of task queues."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

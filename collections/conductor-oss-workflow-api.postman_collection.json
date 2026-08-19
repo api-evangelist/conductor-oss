@@ -1,0 +1,1160 @@
+{
+  "item": [
+    {
+      "id": "a94d4223-7b0a-494e-94f3-b3ec2f889e90",
+      "name": "Workflow",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "421741d2-9ee9-4894-8c46-d4142b5ff849",
+          "name": "Start a workflow",
+          "request": {
+            "name": "Start a workflow",
+            "description": {
+              "content": "Starts a new workflow execution.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workflow"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<integer>\",\n  \"correlationId\": \"<string>\",\n  \"input\": \"<object>\",\n  \"taskToDomain\": {\n    \"key_0\": \"<string>\"\n  },\n  \"externalInputPayloadStoragePath\": \"<string>\",\n  \"priority\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "64443682-b54a-49f4-96fa-fd980adb88a4",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workflow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<integer>\",\n  \"correlationId\": \"<string>\",\n  \"input\": \"<object>\",\n  \"taskToDomain\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"externalInputPayloadStoragePath\": \"<string>\",\n  \"priority\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f64750d-c14f-42b3-9b3b-d33ff942cf35",
+          "name": "Get workflow execution",
+          "request": {
+            "name": "Get workflow execution",
+            "description": {
+              "content": "Returns the execution details of a specific workflow.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workflow",
+                ":workflowId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeTasks",
+                  "value": "true"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workflowId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f92d3f1d-f9c0-4284-8598-a2aee7f24237",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workflow",
+                    ":workflowId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeTasks",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"workflowId\": \"string\",\n  \"workflowName\": \"string\",\n  \"workflowVersion\": 9386,\n  \"correlationId\": \"string\",\n  \"status\": \"TIMED_OUT\",\n  \"input\": {},\n  \"output\": {},\n  \"tasks\": [\n    {\n      \"taskId\": \"string\",\n      \"taskType\": \"string\",\n      \"status\": \"FAILED\",\n      \"referenceTaskName\": \"string\",\n      \"workflowInstanceId\": \"string\",\n      \"inputData\": {},\n      \"outputData\": {},\n      \"scheduledTime\": 8840,\n      \"startTime\": 2228,\n      \"endTime\": 6324,\n      \"retryCount\": 3323,\n      \"pollCount\": 8866,\n      \"callbackAfterSeconds\": 8195,\n      \"workerId\": \"string\"\n    },\n    {\n      \"taskId\": \"string\",\n      \"taskType\": \"string\",\n      \"status\": \"SCHEDULED\",\n      \"referenceTaskName\": \"string\",\n      \"workflowInstanceId\": \"string\",\n      \"inputData\": {},\n      \"outputData\": {},\n      \"scheduledTime\": 1150,\n      \"startTime\": 7952,\n      \"endTime\": 757,\n      \"retryCount\": 511,\n      \"pollCount\": 6174,\n      \"callbackAfterSeconds\": 342,\n      \"workerId\": \"string\"\n    }\n  ],\n  \"startTime\": 6503,\n  \"endTime\": 2355,\n  \"updateTime\": 8202,\n  \"reasonForIncompletion\": \"string\",\n  \"priority\": 4674,\n  \"failedReferenceTaskNames\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a68ae695-ea1f-4280-8c28-01ab790bd0a2",
+          "name": "Terminate a workflow",
+          "request": {
+            "name": "Terminate a workflow",
+            "description": {
+              "content": "Terminates a running workflow execution.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workflow",
+                ":workflowId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "reason",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workflowId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b0f4b7fb-6cbf-439d-bf8a-f9b2c4d03df7",
+              "name": "Workflow terminated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workflow",
+                    ":workflowId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reason",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b576b333-50f4-4245-87e6-0784eca590cc",
+          "name": "Pause a workflow",
+          "request": {
+            "name": "Pause a workflow",
+            "description": {
+              "content": "Pauses a running workflow execution.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workflow",
+                ":workflowId",
+                "pause"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workflowId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4ae0e790-40b7-49e9-a05c-3fa853ac2bbb",
+              "name": "Workflow paused",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workflow",
+                    ":workflowId",
+                    "pause"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85fbabb0-46a2-46d2-859a-7fdca77942ad",
+          "name": "Resume a workflow",
+          "request": {
+            "name": "Resume a workflow",
+            "description": {
+              "content": "Resumes a paused workflow execution.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workflow",
+                ":workflowId",
+                "resume"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workflowId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5c2363b-3f14-412f-9606-0e365d755733",
+              "name": "Workflow resumed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workflow",
+                    ":workflowId",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9edf834-0b3d-4f16-93c1-451b3b4dca52",
+          "name": "Restart a workflow",
+          "request": {
+            "name": "Restart a workflow",
+            "description": {
+              "content": "Restarts a completed or terminated workflow from the beginning.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workflow",
+                ":workflowId",
+                "restart"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "useLatestDefinitions",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workflowId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0cd257e7-d96e-488d-8255-6739cbea24e8",
+              "name": "Workflow restarted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workflow",
+                    ":workflowId",
+                    "restart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "useLatestDefinitions",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "631da5f9-978a-4d8f-b8b9-6f54505cb320",
+          "name": "Retry a workflow",
+          "request": {
+            "name": "Retry a workflow",
+            "description": {
+              "content": "Retries a failed workflow from the last failed task.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workflow",
+                ":workflowId",
+                "retry"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "resumeSubworkflowTasks",
+                  "value": "false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workflowId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba8b90a5-afb6-453f-b0eb-207fba76a20e",
+              "name": "Workflow retried",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workflow",
+                    ":workflowId",
+                    "retry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "resumeSubworkflowTasks",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "beab3468-0fdd-4246-8b6a-ec435e383857",
+          "name": "Rerun a workflow",
+          "request": {
+            "name": "Rerun a workflow",
+            "description": {
+              "content": "Reruns a completed workflow from a specific task.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workflow",
+                ":workflowId",
+                "rerun"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workflowId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reRunFromWorkflowId\": \"<string>\",\n  \"reRunFromTaskId\": \"<string>\",\n  \"workflowInput\": \"<object>\",\n  \"taskInput\": \"<object>\",\n  \"correlationId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cd06f463-6fc1-4d23-b554-ace27f78bf17",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workflow",
+                    ":workflowId",
+                    "rerun"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reRunFromWorkflowId\": \"<string>\",\n  \"reRunFromTaskId\": \"<string>\",\n  \"workflowInput\": \"<object>\",\n  \"taskInput\": \"<object>\",\n  \"correlationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78d23d40-b9f1-43bb-bcbd-f3cb5854a57d",
+          "name": "Skip a task",
+          "request": {
+            "name": "Skip a task",
+            "description": {
+              "content": "Skips a specific task in a running workflow.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workflow",
+                ":workflowId",
+                "skiptask",
+                ":taskReferenceName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workflowId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskReferenceName",
+                  "description": "(Required) "
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4cc364ca-38e7-4ab3-ae26-bddd747468d2",
+              "name": "Task skipped",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workflow",
+                    ":workflowId",
+                    "skiptask",
+                    ":taskReferenceName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workflowId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskReferenceName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e46045c5-54ef-4ff6-98de-5a3514a0c189",
+          "name": "Search workflows",
+          "request": {
+            "name": "Search workflows",
+            "description": {
+              "content": "Search for workflow executions based on query parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workflow",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "freeText",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{baseUrl}}",
+                  "key": "baseUrl"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b5cb9363-511a-4913-83d8-e5eb25af8892",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workflow",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "freeText",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{baseUrl}}",
+                      "key": "baseUrl"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalHits\": 828,\n  \"results\": [\n    {\n      \"workflowId\": \"string\",\n      \"workflowName\": \"string\",\n      \"workflowVersion\": 3615,\n      \"correlationId\": \"string\",\n      \"status\": \"RUNNING\",\n      \"input\": {},\n      \"output\": {},\n      \"tasks\": [\n        {\n          \"taskId\": \"string\",\n          \"taskType\": \"string\",\n          \"status\": \"SCHEDULED\",\n          \"referenceTaskName\": \"string\",\n          \"workflowInstanceId\": \"string\",\n          \"inputData\": {},\n          \"outputData\": {},\n          \"scheduledTime\": 348,\n          \"startTime\": 4543,\n          \"endTime\": 2390,\n          \"retryCount\": 36,\n          \"pollCount\": 8894,\n          \"callbackAfterSeconds\": 5859,\n          \"workerId\": \"string\"\n        },\n        {\n          \"taskId\": \"string\",\n          \"taskType\": \"string\",\n          \"status\": \"COMPLETED\",\n          \"referenceTaskName\": \"string\",\n          \"workflowInstanceId\": \"string\",\n          \"inputData\": {},\n          \"outputData\": {},\n          \"scheduledTime\": 5544,\n          \"startTime\": 7132,\n          \"endTime\": 307,\n          \"retryCount\": 3899,\n          \"pollCount\": 4505,\n          \"callbackAfterSeconds\": 4901,\n          \"workerId\": \"string\"\n        }\n      ],\n      \"startTime\": 9788,\n      \"endTime\": 4658,\n      \"updateTime\": 7360,\n      \"reasonForIncompletion\": \"string\",\n      \"priority\": 8038,\n      \"failedReferenceTaskNames\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"workflowId\": \"string\",\n      \"workflowName\": \"string\",\n      \"workflowVersion\": 4752,\n      \"correlationId\": \"string\",\n      \"status\": \"COMPLETED\",\n      \"input\": {},\n      \"output\": {},\n      \"tasks\": [\n        {\n          \"taskId\": \"string\",\n          \"taskType\": \"string\",\n          \"status\": \"TIMED_OUT\",\n          \"referenceTaskName\": \"string\",\n          \"workflowInstanceId\": \"string\",\n          \"inputData\": {},\n          \"outputData\": {},\n          \"scheduledTime\": 51,\n          \"startTime\": 292,\n          \"endTime\": 1431,\n          \"retryCount\": 5995,\n          \"pollCount\": 9860,\n          \"callbackAfterSeconds\": 4310,\n          \"workerId\": \"string\"\n        },\n        {\n          \"taskId\": \"string\",\n          \"taskType\": \"string\",\n          \"status\": \"IN_PROGRESS\",\n          \"referenceTaskName\": \"string\",\n          \"workflowInstanceId\": \"string\",\n          \"inputData\": {},\n          \"outputData\": {},\n          \"scheduledTime\": 9627,\n          \"startTime\": 895,\n          \"endTime\": 1127,\n          \"retryCount\": 9553,\n          \"pollCount\": 7985,\n          \"callbackAfterSeconds\": 798,\n          \"workerId\": \"string\"\n        }\n      ],\n      \"startTime\": 1261,\n      \"endTime\": 7759,\n      \"updateTime\": 9243,\n      \"reasonForIncompletion\": \"string\",\n      \"priority\": 1405,\n      \"failedReferenceTaskNames\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "{{baseUrl}}/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "92eb1da4-4021-4bde-bc4c-c25b531ca06f",
+    "name": "Conductor OSS REST Events Workflow API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Conductor OSS REST API exposes the workflow orchestration engine's surface for managing workflow definitions, starting and querying workflow executions, handling tasks and workers, registering event handlers, and administering metadata. Conductor OSS is the Netflix-founded, Orkes-stewarded open source workflow and agentic AI orchestration platform.\n\nContact Support:\n Name: Conductor OSS",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Conductor OSS REST Events Metadata API",
+    "version": "3.x"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List workflow definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/api/metadata/workflow"
+          },
+          "docs": "Returns all registered workflow definitions."
+        },
+        {
+          "info": {
+            "name": "Register a workflow definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{baseUrl}/api/metadata/workflow",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers a new workflow definition."
+        },
+        {
+          "info": {
+            "name": "Update workflow definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{baseUrl}/api/metadata/workflow",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates existing workflow definitions."
+        },
+        {
+          "info": {
+            "name": "Get workflow definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/api/metadata/workflow/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a specific workflow definition by name."
+        },
+        {
+          "info": {
+            "name": "Delete a workflow definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{baseUrl}/api/metadata/workflow/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deletes a workflow definition by name and version."
+        },
+        {
+          "info": {
+            "name": "List task definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/api/metadata/taskdefs"
+          },
+          "docs": "Returns all registered task definitions."
+        },
+        {
+          "info": {
+            "name": "Register task definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{baseUrl}/api/metadata/taskdefs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers new task definitions."
+        },
+        {
+          "info": {
+            "name": "Get task definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{baseUrl}/api/metadata/taskdefs/:taskType",
+            "params": [
+              {
+                "name": "taskType",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a specific task definition by name."
+        },
+        {
+          "info": {
+            "name": "Delete a task definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{baseUrl}/api/metadata/taskdefs/:taskType",
+            "params": [
+              {
+                "name": "taskType",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a task definition by name."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
