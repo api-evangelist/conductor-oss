@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Conductor OSS REST Events Workflow API
+  title: Conductor OSS REST Workflow API
   description: The Conductor OSS REST API exposes the workflow orchestration engine's surface for managing workflow definitions, starting and querying workflow executions, handling tasks and workers, registering event handlers, and administering metadata. Conductor OSS is the Netflix-founded, Orkes-stewarded open source workflow and agentic AI orchestration platform.
   version: 3.x
   contact:
@@ -243,74 +243,6 @@ paths:
                 $ref: '#/components/schemas/SearchResult'
 components:
   schemas:
-    SearchResult:
-      type: object
-      properties:
-        totalHits:
-          type: integer
-          format: int64
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Workflow'
-    RerunWorkflowRequest:
-      type: object
-      properties:
-        reRunFromWorkflowId:
-          type: string
-        reRunFromTaskId:
-          type: string
-        workflowInput:
-          type: object
-        taskInput:
-          type: object
-        correlationId:
-          type: string
-    Workflow:
-      type: object
-      properties:
-        workflowId:
-          type: string
-        workflowName:
-          type: string
-        workflowVersion:
-          type: integer
-        correlationId:
-          type: string
-        status:
-          type: string
-          enum:
-          - RUNNING
-          - COMPLETED
-          - FAILED
-          - TIMED_OUT
-          - TERMINATED
-          - PAUSED
-        input:
-          type: object
-        output:
-          type: object
-        tasks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Task'
-        startTime:
-          type: integer
-          format: int64
-        endTime:
-          type: integer
-          format: int64
-        updateTime:
-          type: integer
-          format: int64
-        reasonForIncompletion:
-          type: string
-        priority:
-          type: integer
-        failedReferenceTaskNames:
-          type: array
-          items:
-            type: string
     Task:
       type: object
       properties:
@@ -374,3 +306,71 @@ components:
           type: string
         priority:
           type: integer
+    SearchResult:
+      type: object
+      properties:
+        totalHits:
+          type: integer
+          format: int64
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Workflow'
+    Workflow:
+      type: object
+      properties:
+        workflowId:
+          type: string
+        workflowName:
+          type: string
+        workflowVersion:
+          type: integer
+        correlationId:
+          type: string
+        status:
+          type: string
+          enum:
+          - RUNNING
+          - COMPLETED
+          - FAILED
+          - TIMED_OUT
+          - TERMINATED
+          - PAUSED
+        input:
+          type: object
+        output:
+          type: object
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
+        startTime:
+          type: integer
+          format: int64
+        endTime:
+          type: integer
+          format: int64
+        updateTime:
+          type: integer
+          format: int64
+        reasonForIncompletion:
+          type: string
+        priority:
+          type: integer
+        failedReferenceTaskNames:
+          type: array
+          items:
+            type: string
+    RerunWorkflowRequest:
+      type: object
+      properties:
+        reRunFromWorkflowId:
+          type: string
+        reRunFromTaskId:
+          type: string
+        workflowInput:
+          type: object
+        taskInput:
+          type: object
+        correlationId:
+          type: string

@@ -1,0 +1,29 @@
+# Front Door AI Index — conductor-oss — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: conductor-oss
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: conductor-oss.org
+  final_host: conductor-oss.org
+  ownership: own
+  owner: conductor-oss
+  shares_host_with:
+  - netflix-conductor
+  inherited_from: null
+  verdict: scored
+  score: 8
+  host_score: 8
+  density: 15.59
+  words: 513
+  tiers:
+    agentic: 3
+    core: 4
+    model: 1
+  ambiguous: 9
+  top_terms:
+    agent: 9
+    AI: 4
+    AI agent: 3
+    OpenAI: 1
