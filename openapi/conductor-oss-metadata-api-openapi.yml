@@ -179,6 +179,46 @@ paths:
           description: Task definition deleted
 components:
   schemas:
+    WorkflowDef:
+      type: object
+      required:
+      - name
+      - tasks
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        version:
+          type: integer
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkflowTask'
+        inputParameters:
+          type: array
+          items:
+            type: string
+        outputParameters:
+          type: object
+        schemaVersion:
+          type: integer
+        restartable:
+          type: boolean
+        workflowStatusListenerEnabled:
+          type: boolean
+        timeoutSeconds:
+          type: integer
+          format: int64
+        timeoutPolicy:
+          type: string
+          enum:
+          - TIME_OUT_WF
+          - ALERT_ONLY
+        failureWorkflow:
+          type: string
+        ownerEmail:
+          type: string
     TaskDef:
       type: object
       required:
@@ -228,46 +268,6 @@ components:
           type: string
         pollTimeoutSeconds:
           type: integer
-    WorkflowDef:
-      type: object
-      required:
-      - name
-      - tasks
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        version:
-          type: integer
-        tasks:
-          type: array
-          items:
-            $ref: '#/components/schemas/WorkflowTask'
-        inputParameters:
-          type: array
-          items:
-            type: string
-        outputParameters:
-          type: object
-        schemaVersion:
-          type: integer
-        restartable:
-          type: boolean
-        workflowStatusListenerEnabled:
-          type: boolean
-        timeoutSeconds:
-          type: integer
-          format: int64
-        timeoutPolicy:
-          type: string
-          enum:
-          - TIME_OUT_WF
-          - ALERT_ONLY
-        failureWorkflow:
-          type: string
-        ownerEmail:
-          type: string
     WorkflowTask:
       type: object
       required:

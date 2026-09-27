@@ -7,17 +7,21 @@ description: >-
   MCP-based tool calling.
 type: Index
 deliveryModel:
-  model: unknown
+  model: saas
+  license_evidence:
+    not_product:
+    - conductor-oss/conductor
+    - conductor-oss/conductor-mcp
   open_source: unknown
   commercial: true
   callable_host: false
-  label: Delivery model not determined — needs a product licence on record
+  label: Hosted service · you call their endpoint
   confidence: low
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: unknown
@@ -31,13 +35,16 @@ accessModel:
   generated: '2026-07-22'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/conductor-oss.png
+x-docs-platform: mkdocs
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-24
 tags:
-  - Agentic AI
+  - AI Agents
   - Durable Execution
   - Event-Driven
   - Microservices
   - Netflix
-  - Open-Source
+  - Open Source
   - Orchestration
   - Workflow Engine
   - Workflows
@@ -51,6 +58,7 @@ tags_raw:
   - Orchestration
   - Workflow Engine
   - Workflows
+  - Open-Source
 url: https://raw.githubusercontent.com/api-evangelist/conductor-oss/refs/heads/main/apis.yml
 created: '2026-05-25'
 modified: '2026-05-25'
@@ -64,9 +72,9 @@ apis:
     Conductor workflows directly.
   humanURL: https://github.com/conductor-oss/conductor-mcp
   tags:
-  - Agentic AI
+  - AI Agents
   - MCP
-  - Open-Source
+  - Open Source
   - Orchestration
   - Tools
   tags_raw:
@@ -75,6 +83,7 @@ apis:
   - Open Source
   - Orchestration
   - Tools
+  - Open-Source
   properties:
   - type: GitHubRepository
     url: https://github.com/conductor-oss/conductor-mcp

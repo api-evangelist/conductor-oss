@@ -243,47 +243,28 @@ paths:
                 $ref: '#/components/schemas/SearchResult'
 components:
   schemas:
-    Task:
+    SearchResult:
       type: object
       properties:
-        taskId:
+        totalHits:
+          type: integer
+          format: int64
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Workflow'
+    RerunWorkflowRequest:
+      type: object
+      properties:
+        reRunFromWorkflowId:
           type: string
-        taskType:
+        reRunFromTaskId:
           type: string
-        status:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - FAILED
-          - TIMED_OUT
-          - CANCELED
-          - SCHEDULED
-        referenceTaskName:
-          type: string
-        workflowInstanceId:
-          type: string
-        inputData:
+        workflowInput:
           type: object
-        outputData:
+        taskInput:
           type: object
-        scheduledTime:
-          type: integer
-          format: int64
-        startTime:
-          type: integer
-          format: int64
-        endTime:
-          type: integer
-          format: int64
-        retryCount:
-          type: integer
-        pollCount:
-          type: integer
-        callbackAfterSeconds:
-          type: integer
-          format: int64
-        workerId:
+        correlationId:
           type: string
     StartWorkflowRequest:
       type: object
@@ -306,16 +287,6 @@ components:
           type: string
         priority:
           type: integer
-    SearchResult:
-      type: object
-      properties:
-        totalHits:
-          type: integer
-          format: int64
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Workflow'
     Workflow:
       type: object
       properties:
@@ -361,16 +332,45 @@ components:
           type: array
           items:
             type: string
-    RerunWorkflowRequest:
+    Task:
       type: object
       properties:
-        reRunFromWorkflowId:
+        taskId:
           type: string
-        reRunFromTaskId:
+        taskType:
           type: string
-        workflowInput:
+        status:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+          - TIMED_OUT
+          - CANCELED
+          - SCHEDULED
+        referenceTaskName:
+          type: string
+        workflowInstanceId:
+          type: string
+        inputData:
           type: object
-        taskInput:
+        outputData:
           type: object
-        correlationId:
+        scheduledTime:
+          type: integer
+          format: int64
+        startTime:
+          type: integer
+          format: int64
+        endTime:
+          type: integer
+          format: int64
+        retryCount:
+          type: integer
+        pollCount:
+          type: integer
+        callbackAfterSeconds:
+          type: integer
+          format: int64
+        workerId:
           type: string
