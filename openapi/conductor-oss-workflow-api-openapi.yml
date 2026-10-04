@@ -288,6 +288,50 @@ components:
           type: array
           items:
             type: string
+    SearchResult:
+      type: object
+      properties:
+        totalHits:
+          type: integer
+          format: int64
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Workflow'
+    RerunWorkflowRequest:
+      type: object
+      properties:
+        reRunFromWorkflowId:
+          type: string
+        reRunFromTaskId:
+          type: string
+        workflowInput:
+          type: object
+        taskInput:
+          type: object
+        correlationId:
+          type: string
+    StartWorkflowRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        version:
+          type: integer
+        correlationId:
+          type: string
+        input:
+          type: object
+        taskToDomain:
+          type: object
+          additionalProperties:
+            type: string
+        externalInputPayloadStoragePath:
+          type: string
+        priority:
+          type: integer
     Task:
       type: object
       properties:
@@ -330,47 +374,3 @@ components:
           format: int64
         workerId:
           type: string
-    RerunWorkflowRequest:
-      type: object
-      properties:
-        reRunFromWorkflowId:
-          type: string
-        reRunFromTaskId:
-          type: string
-        workflowInput:
-          type: object
-        taskInput:
-          type: object
-        correlationId:
-          type: string
-    StartWorkflowRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        version:
-          type: integer
-        correlationId:
-          type: string
-        input:
-          type: object
-        taskToDomain:
-          type: object
-          additionalProperties:
-            type: string
-        externalInputPayloadStoragePath:
-          type: string
-        priority:
-          type: integer
-    SearchResult:
-      type: object
-      properties:
-        totalHits:
-          type: integer
-          format: int64
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Workflow'
