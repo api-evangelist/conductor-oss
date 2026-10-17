@@ -147,32 +147,6 @@ paths:
                   type: integer
 components:
   schemas:
-    TaskResult:
-      type: object
-      required:
-      - workflowInstanceId
-      - taskId
-      - status
-      properties:
-        workflowInstanceId:
-          type: string
-        taskId:
-          type: string
-        status:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - FAILED
-        outputData:
-          type: object
-        reasonForIncompletion:
-          type: string
-        callbackAfterSeconds:
-          type: integer
-          format: int64
-        workerId:
-          type: string
     Task:
       type: object
       properties:
@@ -210,6 +184,32 @@ components:
           type: integer
         pollCount:
           type: integer
+        callbackAfterSeconds:
+          type: integer
+          format: int64
+        workerId:
+          type: string
+    TaskResult:
+      type: object
+      required:
+      - workflowInstanceId
+      - taskId
+      - status
+      properties:
+        workflowInstanceId:
+          type: string
+        taskId:
+          type: string
+        status:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+        outputData:
+          type: object
+        reasonForIncompletion:
+          type: string
         callbackAfterSeconds:
           type: integer
           format: int64
