@@ -1,4 +1,4 @@
-# Conductor OSS (conductor-oss)
+# Conductor OSS
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,111 +66,106 @@
 
 Conductor OSS is the Netflix-founded, Orkes-stewarded open source workflow and agentic AI orchestration platform. It provides a durable, event-driven workflow engine for coordinating microservices, long-running tasks, human approvals, and LLM-powered agents across any language or cloud, with first class support for HTTP, gRPC, Kafka, AMQP, SQS, and MCP-based tool calling.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/conductor-oss/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/conductor-oss/refs/heads/main/apis.yml)
+**Areas:** AI Agents · Durable Execution · Event-Driven · Microservices · Netflix · Open Source · Orchestration · Workflow Engine · Workflows
 
-## Scope
+## Conductor OSS on APIs.io
 
-- **Type:** Index
+Everything profiled for Conductor OSS is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/conductor-oss/](https://apis.io/providers/conductor-oss/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Agentic AI
-- Durable Execution
-- Event-Driven
-- Microservices
-- Netflix
-- Open Source
-- Orchestration
-- Workflow Engine
-- Workflows
+- [Conductor MCP Server](https://apis.io/apis/conductor-oss/conductor-mcp/) — Conductor MCP is an official Model Context Protocol server for Orkes Conductor that exposes workflow execution, task management, and metadata operations as…
+- [Conductor OSS Events API](https://apis.io/apis/conductor-oss/conductor-oss-events-api/) — The Events API from Conductor OSS — 1 operation(s) for events.
+- [Conductor OSS Metadata API](https://apis.io/apis/conductor-oss/conductor-oss-metadata-api/) — The Metadata API from Conductor OSS — 4 operation(s) for metadata.
+- [Conductor OSS Tasks API](https://apis.io/apis/conductor-oss/conductor-oss-tasks-api/) — The Tasks API from Conductor OSS — 5 operation(s) for tasks.
+- [Conductor OSS Workflow API](https://apis.io/apis/conductor-oss/conductor-oss-workflow-api/) — The Workflow API from Conductor OSS — 9 operation(s) for workflow.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-25
-- **Modified:** 2026-05-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Conductor OSS REST API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Conductor OSS REST API is the canonical control plane for the workflow engine — registering and versioning workflow and task definitions, starting and querying workflow executions, polling and updating tasks from workers, and wiring external event sources into workflows. It is served by the Conductor Server (Java / Spring Boot) and is the same surface used by every official Conductor SDK and the Orkes-hosted Conductor Cloud.
+- [Conductor Oss Agentic Access](https://apis.io/agentic-access/conductor-oss/conductor-oss-agentic-access/)
 
-- **Human URL:** [https://docs.conductor-oss.org/](https://docs.conductor-oss.org/)
-- **Base URL:** `http://localhost:8080/api`
+#### Collections (5)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Agentic AI
-- Durable Execution
-- Event-Driven
-- Microservices
-- Open Source
-- Orchestration
-- Workflow Engine
-- Workflows
+- [Conductor OSS REST API](https://apis.io/collections/conductor-oss/open-conductor-oss/)
+- [Conductor OSS REST Events API](https://apis.io/collections/conductor-oss/open-conductor-oss-events-api/)
+- [Conductor OSS REST Events Metadata API](https://apis.io/collections/conductor-oss/open-conductor-oss-metadata-api/)
+- [Conductor OSS REST Events Tasks API](https://apis.io/collections/conductor-oss/open-conductor-oss-tasks-api/)
+- [Conductor OSS REST Events Workflow API](https://apis.io/collections/conductor-oss/open-conductor-oss-workflow-api/)
 
-#### Properties
+#### Security (1)
 
-- [Documentation](https://docs.conductor-oss.org/)
-- [API Reference](https://docs.conductor-oss.org/reference)
-- [Quickstart](https://docs.conductor-oss.org/getting-started)
-- [Authentication](https://docs.conductor-oss.org/devguide/running/configuration/security)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/conductor-oss/refs/heads/main/openapi/conductor-oss-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/conductor-oss.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/conductor-oss.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-### Conductor MCP Server
+- [Conductor Oss Domain Security](https://apis.io/security/conductor-oss/conductor-oss-domain-security/)
 
-Conductor MCP is an official Model Context Protocol server for Orkes Conductor that exposes workflow execution, task management, and metadata operations as MCP tools so that LLMs and AI agents can orchestrate Conductor workflows directly.
+## Where to find this API
 
-- **Human URL:** [https://github.com/conductor-oss/conductor-mcp](https://github.com/conductor-oss/conductor-mcp)
-
-#### Tags
-
-- Agentic AI
-- MCP
-- Open Source
-- Orchestration
-- Tools
-
-#### Properties
-
-- [GitHub Repository](https://github.com/conductor-oss/conductor-mcp)
-- [Documentation](https://docs.conductor-oss.org/ai-cookbook)
-- [Postman Collection](collections/conductor-oss.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/conductor-oss.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://conductor-oss.org/)
 - [Documentation](https://docs.conductor-oss.org/)
-- [Getting Started](https://docs.conductor-oss.org/getting-started)
-- [Git Hub](https://github.com/conductor-oss)
-- [GitHub Organization](https://github.com/conductor-oss)
-- [GitHub Repository](https://github.com/conductor-oss/conductor)
-- [Blog](https://orkes.io/blog/)
-- [Slack](https://join.slack.com/t/orkes-conductor/shared_invite/zt-3dpcskdyd-W895bJDm8psAV7viYG3jFA)
-- [YouTube](https://www.youtube.com/@orkesio)
-- [License](https://github.com/conductor-oss/conductor/blob/main/LICENSE)
+- [Getting started](https://docs.conductor-oss.org/getting-started)
 - [Pricing](https://orkes.io/pricing)
-- [Portal](https://cloud.orkes.io/)
-- [Sign Up](https://cloud.orkes.io/signup)
-- [Training](https://orkes.io/academy/)
-- [SDK](https://github.com/conductor-oss/java-sdk)
-- [SDK](https://github.com/conductor-oss/python-sdk)
-- [SDK](https://github.com/conductor-oss/go-sdk)
-- [SDK](https://github.com/conductor-oss/javascript-sdk)
-- [SDK](https://github.com/conductor-oss/csharp-sdk)
-- [SDK](https://github.com/conductor-oss/clojure-sdk)
-- [SDK](https://github.com/conductor-oss/rust-sdk)
-- [SDK](https://github.com/conductor-oss/ruby-sdk)
-- [C L I](https://github.com/conductor-oss/conductor-cli)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Solutions](undefined)
+- [Blog](https://orkes.io/blog/)
+- [GitHub](https://github.com/conductor-oss)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 32.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 44.2 |
+| Contract governance | 0.0 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 50.0 |
+| Access clarity | 23.7 |
+
+**Agent readiness 17.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/conductor-oss/](https://apis.io/providers/conductor-oss/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Conductor OSS: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/conductor-oss/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
